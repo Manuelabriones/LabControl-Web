@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   Monitor,
   LayoutDashboard,
@@ -16,6 +16,7 @@ import { useAuth } from "../context/AuthContext";
 const MainLayout = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const displayName =
     user?.nombre ||
@@ -24,11 +25,38 @@ const MainLayout = () => {
     user?.email ||
     "LabControl User";
 
-  const isAdmin = user?.role === "ADMIN";
+  const isAdmin = user?.role === "ADMIN" || user?.rol === "ADMIN";
+
+  // Títulos dinámicos según la pantalla actual.
+  const pageTitles = {
+    "/": {
+      title: "Home",
+      subtitle: "System Dashboard",
+    },
+    "/laboratories": {
+      title: "Laboratories",
+      subtitle: "Explore available computers",
+    },
+    "/assignments": {
+      title: "My Session",
+      subtitle: "Manage your equipment assignment",
+    },
+    "/profile": {
+      title: "My Profile",
+      subtitle: "Account Information",
+    },
+  };
+
+  const currentPage = pageTitles[location.pathname] || pageTitles["/"];
 
   const handleLogout = () => {
     logout();
     navigate("/login");
+  };
+
+  // Abrir el perfil del usuario.
+  const handleProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -40,31 +68,54 @@ const MainLayout = () => {
         </div>
 
         <nav className="sidebar-nav">
-          <NavLink to="/" end className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <LayoutDashboard size={18} />
             <span>Home</span>
           </NavLink>
 
-          <NavLink to="/laboratories" className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/laboratories"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <Box size={18} />
             <span>Laboratories</span>
           </NavLink>
 
-          <NavLink to="/assignments" className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/assignments"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <Clock size={18} />
             <span>My Session</span>
           </NavLink>
 
-          {isAdmin && (
-            <NavLink to="/profile" className={({ isActive }) =>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
               `sidebar-link ${isActive ? "active" : ""}`
-            }>
+            }
+          >
+            <UserRound size={18} />
+            <span>My Profile</span>
+          </NavLink>
+
+          {isAdmin && (
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                `sidebar-link ${isActive ? "active" : ""}`
+              }
+            >
               <Users size={18} />
               <span>Administrator</span>
             </NavLink>
@@ -95,8 +146,8 @@ const MainLayout = () => {
       <main className="main-area">
         <header className="topbar">
           <div>
-            <h1>Home</h1>
-            <p>System Dashboard</p>
+            <h1>{currentPage.title}</h1>
+            <p>{currentPage.subtitle}</p>
           </div>
 
           <div className="topbar-actions">
@@ -109,9 +160,15 @@ const MainLayout = () => {
               <span className="notification-dot"></span>
             </button>
 
-            <div className="topbar-avatar">
+            <button
+              type="button"
+              className="topbar-avatar"
+              onClick={handleProfile}
+              title="My Profile"
+              aria-label="Open My Profile"
+            >
               <UserRound size={20} />
-            </div>
+            </button>
           </div>
         </header>
 
