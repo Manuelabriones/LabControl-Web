@@ -1,3 +1,4 @@
+
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -20,41 +21,54 @@ const Navbar = () => {
 
   return (
     <aside className="sidebar">
-      <div className="brand">
+      {/* Logo */}
+      <div className="sidebar-brand">
         <Monitor size={27} />
-        <h2>LabControl</h2>
+        <span>LabControl</span>
       </div>
 
-      <nav className="navigation">
-        <NavLink to="/" end>
+      {/* Navigation */}
+      <nav className="sidebar-nav">
+        <NavLink to="/" end className="sidebar-link">
           <LayoutDashboard size={19} />
-          Dashboard
+          <span>Dashboard</span>
         </NavLink>
 
-        <NavLink to="/laboratories">
+        <NavLink to="/laboratories" className="sidebar-link">
           <Monitor size={19} />
-          Computers
+          <span>Computers</span>
         </NavLink>
 
-        <NavLink to="/assignments">
+        <NavLink to="/assignments" className="sidebar-link">
           <ClipboardList size={19} />
-          My Requests
+          <span>My Requests</span>
         </NavLink>
 
-        <NavLink to="/profile">
+        <NavLink to="/profile" className="sidebar-link">
           <UserRound size={19} />
-          My Profile
+          <span>My Profile</span>
         </NavLink>
       </nav>
 
-      <div className="sidebar-bottom">
-        <span>{user?.nombre || user?.name || user?.email || "User"}</span>
+      {/* User information */}
+      <div className="sidebar-user">
+        <div className="sidebar-user-avatar">
+          <UserRound size={20} />
+        </div>
 
-        <button className="logout-button" onClick={handleLogout}>
-          <LogOut size={18} />
-          Sign Out
-        </button>
+        <div className="sidebar-user-info">
+          <strong>
+            {user?.nombre || user?.name || user?.email || "User"}
+          </strong>
+          <span>{user?.rol || user?.role || "User"}</span>
+        </div>
       </div>
+
+      {/* Logout */}
+      <button className="logout-button" onClick={handleLogout}>
+        <LogOut size={18} />
+        <span>Sign Out</span>
+      </button>
     </aside>
   );
 };

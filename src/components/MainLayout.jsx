@@ -1,5 +1,5 @@
 
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   Monitor,
   LayoutDashboard,
@@ -16,6 +16,7 @@ import { useAuth } from "../context/AuthContext";
 const MainLayout = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const displayName =
     user?.nombre ||
@@ -25,6 +26,31 @@ const MainLayout = () => {
     "LabControl User";
 
   const isAdmin = user?.role === "ADMIN";
+
+  // Títulos dinámicos según la pantalla actual.
+  const pageTitles = {
+    "/": {
+      title: "Home",
+      subtitle: "System Dashboard",
+    },
+    "/laboratories": {
+      title: "Laboratories",
+      subtitle: "Explore available computers",
+    },
+    "/assignments": {
+      title: "Equipment Assignment",
+      subtitle: "Assign an available computer",
+    },
+    "/profile": {
+      title: "My Profile",
+      subtitle: "Manage your account information",
+    },
+  };
+
+  const currentPage = pageTitles[location.pathname] || {
+    title: "LabControl",
+    subtitle: "Computer Laboratory Management",
+  };
 
   const handleLogout = () => {
     logout();
@@ -40,31 +66,44 @@ const MainLayout = () => {
         </div>
 
         <nav className="sidebar-nav">
-          <NavLink to="/" end className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <LayoutDashboard size={18} />
             <span>Home</span>
           </NavLink>
 
-          <NavLink to="/laboratories" className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/laboratories"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <Box size={18} />
             <span>Laboratories</span>
           </NavLink>
 
-          <NavLink to="/assignments" className={({ isActive }) =>
-            `sidebar-link ${isActive ? "active" : ""}`
-          }>
+          <NavLink
+            to="/assignments"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? "active" : ""}`
+            }
+          >
             <Clock size={18} />
             <span>My Session</span>
           </NavLink>
 
           {isAdmin && (
-            <NavLink to="/profile" className={({ isActive }) =>
-              `sidebar-link ${isActive ? "active" : ""}`
-            }>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `sidebar-link ${isActive ? "active" : ""}`
+              }
+            >
               <Users size={18} />
               <span>Administrator</span>
             </NavLink>
@@ -93,10 +132,11 @@ const MainLayout = () => {
       </aside>
 
       <main className="main-area">
+        {/* Encabezado dinámico */}
         <header className="topbar">
           <div>
-            <h1>Home</h1>
-            <p>System Dashboard</p>
+            <h1>{currentPage.title}</h1>
+            <p>{currentPage.subtitle}</p>
           </div>
 
           <div className="topbar-actions">

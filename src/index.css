@@ -901,4 +901,30 @@ img {
   .filter-select {
     width: 100%;
   }
+
+/* Logout button */
+.sidebar .logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: calc(100% - 24px);
+  min-height: 42px;
+  margin: 0 12px 18px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.sidebar .logout-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar .logout-button span {
+  display: inline;
+}
+
 }
