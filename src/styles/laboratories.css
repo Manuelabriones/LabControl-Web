@@ -1,0 +1,380 @@
+﻿
+/* =========================================
+   LABCONTROL - COMPUTER LABORATORIES
+   Figma design
+   ========================================= */
+
+.laboratories-page {
+  min-height: 100%;
+  padding: 20px;
+  background: #EAF0F8;
+  color: #142747;
+  font-family: inherit;
+}
+
+/* =========================================
+   PAGE HEADER
+   ========================================= */
+
+.laboratories-header {
+  margin-bottom: 16px;
+}
+
+.laboratories-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748B;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.laboratories-header h1 {
+  margin: 0 0 4px;
+  color: #142747;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.laboratories-header p {
+  margin: 0;
+  color: #64748B;
+  font-size: 12px;
+}
+
+/* =========================================
+   MAIN PANEL
+   ========================================= */
+
+.laboratories-panel {
+  padding: 14px;
+  background: #FFFFFF;
+  border: 1px solid #DCE5F1;
+  border-radius: 11px;
+  box-shadow: 0 2px 6px rgba(20, 39, 71, 0.05);
+}
+
+/* =========================================
+   LABORATORY SELECTOR
+   ========================================= */
+
+.laboratory-selector {
+  margin-bottom: 12px;
+}
+
+.laboratory-selector h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: #142747;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.laboratory-selector h2 svg {
+  color: #C81024;
+}
+
+.laboratory-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.laboratory-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: #142747;
+  background: #F6F8FC;
+  border: 1px solid #D7E0EF;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.laboratory-tab svg {
+  color: #52647F;
+}
+
+.laboratory-tab:hover {
+  border-color: #C81024;
+}
+
+.laboratory-tab.active {
+  color: #FFFFFF;
+  background: #D81020;
+  border-color: #D81020;
+}
+
+.laboratory-tab.active svg {
+  color: #FFFFFF;
+}
+
+/* =========================================
+   STATUS STATISTICS
+   ========================================= */
+
+.laboratory-statistics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.laboratory-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 65px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.laboratory-stat.available {
+  color: #166534;
+  background: #DDF7E5;
+}
+
+.laboratory-stat.occupied {
+  color: #B91C1C;
+  background: #FFE4E9;
+}
+
+.laboratory-stat.maintenance {
+  color: #A16207;
+  background: #FFF3D8;
+}
+
+.laboratory-stat-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.laboratory-stat.available .laboratory-stat-heading svg {
+  fill: #15803D;
+  color: #15803D;
+  stroke: #FFFFFF;
+}
+
+.laboratory-stat.occupied .laboratory-stat-heading svg {
+  fill: #DC2626;
+  color: #DC2626;
+  stroke: #FFFFFF;
+}
+
+.laboratory-stat.maintenance .laboratory-stat-heading svg {
+  color: #D97706;
+}
+
+.laboratory-stat strong {
+  margin-top: 2px;
+  font-size: 23px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+/* =========================================
+   COMPUTER GRID
+   ========================================= */
+
+.laboratory-computer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.laboratory-computer-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  min-width: 0;
+  min-height: 82px;
+  padding: 9px;
+  padding-bottom: 23px;
+  background: #FFFFFF;
+  border: 1px solid #E0E7F0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(20, 39, 71, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.laboratory-computer-card:hover {
+  border-color: #C81024;
+  box-shadow: 0 3px 8px rgba(20, 39, 71, 0.08);
+}
+
+/* =========================================
+   COMPUTER ICON
+   ========================================= */
+
+.computer-card-icon {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 43px;
+  height: 43px;
+  color: #A90F29;
+  background: #FCE5E9;
+  border-radius: 7px;
+}
+
+/* =========================================
+   COMPUTER INFORMATION
+   ========================================= */
+
+.computer-card-information {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.computer-card-information h3 {
+  margin: 0;
+  color: #142747;
+  font-size: 11px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.computer-specifications,
+.computer-laboratory-name {
+  margin: 0;
+  color: #34445F;
+  font-size: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.computer-laboratory-name {
+  color: #64748B;
+}
+
+/* =========================================
+   COMPUTER STATUS
+   ========================================= */
+
+.computer-card-status {
+  position: absolute;
+  right: 7px;
+  bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.status-available {
+  color: #166534;
+  background: #B9F2C7;
+}
+
+.status-occupied {
+  color: #991B1B;
+  background: #FFD1D9;
+}
+
+.status-maintenance {
+  color: #854D0E;
+  background: #FFE6A5;
+}
+
+.status-unknown {
+  color: #475569;
+  background: #E2E8F0;
+}
+
+/* =========================================
+   LOADING, ERROR AND EMPTY STATES
+   ========================================= */
+
+.laboratory-message {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 140px;
+  color: #64748B;
+  font-size: 13px;
+  text-align: center;
+}
+
+.laboratory-error {
+  color: #B91C1C;
+}
+
+.laboratory-error button {
+  padding: 8px 15px;
+  color: #FFFFFF;
+  background: #C81024;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 950px) {
+  .laboratory-computer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .laboratories-page {
+    padding: 12px;
+  }
+
+  .laboratories-panel {
+    padding: 10px;
+  }
+
+  .laboratories-header h1 {
+    font-size: 20px;
+  }
+
+  .laboratory-tabs {
+    gap: 5px;
+  }
+
+  .laboratory-tab {
+    gap: 4px;
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+
+  .laboratory-statistics {
+    gap: 6px;
+  }
+
+  .laboratory-stat-heading {
+    gap: 4px;
+    font-size: 9px;
+  }
+
+  .laboratory-computer-grid {
+    grid-template-columns: 1fr;
+  }
+}
