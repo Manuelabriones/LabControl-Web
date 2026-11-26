@@ -1,0 +1,334 @@
+
+/* Página My Session */
+.active-session-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenido en dos columnas */
+.active-session-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  padding: 24px;
+}
+
+/* Tarjetas */
+.session-info-card,
+.release-equipment-card {
+  background: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(20, 45, 78, 0.06);
+  min-width: 0;
+}
+
+/* Banner de computadora asignada */
+.session-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #dcfce7;
+  border-radius: 9px;
+  padding: 14px;
+  margin-bottom: 24px;
+}
+
+.session-computer-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #bbf7d0;
+  color: #166534;
+  border-radius: 9px;
+}
+
+.session-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.session-status-content h3 {
+  color: #14532d;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.session-in-use {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  background: #bbf7d0;
+  color: #166534;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.session-status-dot {
+  width: 7px;
+  height: 7px;
+  background: #16a34a;
+  border-radius: 50%;
+}
+
+/* Detalles de sesión */
+.session-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 4px;
+}
+
+.session-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #142d4e;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.session-detail-row svg {
+  flex-shrink: 0;
+}
+
+.session-detail-row span {
+  color: #334155;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.session-detail-row strong {
+  color: #142d4e;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* Encabezado de liberar equipo */
+.release-equipment-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.release-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #142d4e;
+}
+
+.release-card-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.release-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 17px 0;
+}
+
+/* Checkbox */
+.report-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.report-checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: #142d4e;
+  cursor: pointer;
+}
+
+/* Descripción de falla */
+.issue-description-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.issue-description-container label {
+  color: #142d4e;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+.issue-description-container label span {
+  color: #d71929;
+}
+
+.issue-description-container textarea {
+  width: 100%;
+  min-height: 145px;
+  resize: vertical;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #142d4e;
+  background: #f8fafc;
+  outline: none;
+}
+
+.issue-description-container textarea:focus {
+  border-color: #5276ad;
+  box-shadow: 0 0 0 2px rgba(82, 118, 173, 0.12);
+}
+
+.issue-description-container textarea::placeholder {
+  color: #94a3b8;
+}
+
+.issue-character-count {
+  text-align: right;
+  color: #64748b;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+/* Botón liberar */
+.release-equipment-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  padding: 13px;
+  margin-top: auto;
+  background: #d71929;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.release-equipment-button:hover {
+  background: #b91422;
+}
+
+.release-equipment-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mensajes */
+.session-message {
+  margin: 20px 24px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.session-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.session-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Cargando o sin sesión */
+.session-empty {
+  margin: 24px;
+  padding: 45px 20px;
+  min-height: 220px;
+  background: #ffffff;
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #64748b;
+}
+
+.session-empty h2 {
+  color: #142d4e;
+  font-size: 22px;
+  margin: 12px 0 5px;
+}
+
+.session-empty p {
+  margin: 0 0 17px;
+}
+
+.session-loading-icon {
+  animation: session-spin 1s linear infinite;
+}
+
+@keyframes session-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.session-empty-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 17px;
+  border: none;
+  border-radius: 7px;
+  background: #142d4e;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.session-empty-refresh:hover {
+  background: #1e416d;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .active-session-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .active-session-content {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .session-info-card,
+  .release-equipment-card {
+    padding: 15px;
+  }
+
+  .session-detail-row {
+    flex-wrap: wrap;
+  }
+
+  .session-message {
+    margin: 14px;
+  }
+}
